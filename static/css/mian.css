@@ -1,0 +1,11 @@
+
+.licss {
+    float: left;width: 33%;list-style:none}
+.ulcss{
+    text-align: center;width: auto;background-color: #5b80b2;height: 60px}
+.divcss_left{
+    float: left;width: 50%;height: 500px;padding: 50px}
+.divcss_right{
+    float: left;width: 20%;height: 500px;padding: 50px}
+.divcss_foot{
+    width: auto;height: 100px;background-color: #79aec8;clear: both;line-height: 100px;text-align: center}

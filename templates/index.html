@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>公告</title>
+    <link rel="stylesheet" type="text/css" href= "{% static 'css/mian.css' %}">
+</head>
+<body>
+    <div>
+        <img src="{% static 'image/logo.png' %}">
+        <h1>股票资讯</h1>
+        <ul class="ulcss">
+            <li class="licss"><a href="https://finance.sina.com.cn/"><h3>新浪财经</h3></a></li>
+            <li class="licss"><a href="http://www.cninfo.com.cn/cninfo-new/index"><h3>巨潮资讯</h3></a></li>
+            <li class="licss"><a href="https://gupiao.baidu.com/stock/usBIDU.html?from=aladingpc"><h3>百度股票</h3></a></li>
+        </ul>
+    </div>
+    <div style="width: 500px"><h2>最新消息</h2></div>
+    <div>
+        <div class="divcss_left">
+            <ul>
+                <li>
+                    {% for info in meta %}
+
+                    <div class="d1">{{ info.num }}</div>
+                    <div class="d2">{{ info.short_name }}</div>
+                    <div class="d3"><a href={{ info.href }}>{{ info.title }}</a></div>
+                    {% endfor %}
+                </li>
+                <div>
+                    {% if meta.has_previous %}
+                        <a href="?page={{ meta.previous_page_number }}">上一页</a>
+                    {% endif %}
+                    <span>---第{{ meta.number }}页总共{{meta.paginator.num_pages}}页---</span>
+                    {% if meta.has_next %}
+                        <a href="?page={{ meta.next_page_number }}">下一页</a>
+                    {% endif %}
+                </div>
+            </ul>
+        </div>
+        <div class="divcss_right">
+            <p>快速发邮件</p>
+            <form action="http://127.0.0.1:8000/email/" method="post">
+                目标邮箱：<br>
+                <input name="id" type="text">
+                <br>
+                内容：<br>
+                <textarea name="email" id="email_text" cols="30" rows="10"></textarea>
+                <br>
+                <input type="submit" value="发送">
+            </form>
+        </div>
+    </div>
+    <div class="divcss_foot"><p>联系方式：15732633601</p>
+    </div>
+</body>
+</html>
